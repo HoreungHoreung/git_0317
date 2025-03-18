@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        padding: 20px;
+      }
+      .cart-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+      }
+      h2 {
+        text-align: center;
+      }
+      .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+      }
+      .cart-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .item-info {
+        flex: 1;
+        margin-left: 15px;
+      }
+      .item-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .item-price {
+        color: #007bff;
+        font-size: 14px;
+      }
+      .quantity {
+        display: flex;
+        align-items: center;
+        margin-left: 15px; /* 왼쪽 여백 추가 */
+      }
+      .quantity button {
+        width: 25px;
+        height: 25px;
+        border: 1px solid #ccc;
+        background: #f8f8f8;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .quantity input {
+        width: 40px;
+        text-align: center;
+        margin: 0 5px;
+        border: 1px solid #ccc;
+      }
+      .remove-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .checkout-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cart-container">
+      <h2>장바구니</h2>
+      <!-- 첫 번째 상품 -->
+      <div class="cart-item">
+        <img
+          src="https://cdn.pixabay.com/photo/2020/01/12/08/14/sunglass-4759505_1280.png"
+          alt="상품 이미지"
+        />
+        <div class="item-info">
+          <div class="item-title">상품 1</div>
+          <div class="item-price">₩10,000</div>
+        </div>
+        <div class="quantity">
+          <button onclick="decreaseQuantity(this)">-</button>
+          <input type="number" value="1" min="1" />
+          <button onclick="increaseQuantity(this)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeItem(this)">삭제</button>
+      </div>
+      <!-- 두 번째 상품 -->
+      <div class="cart-item">
+        <img
+          src="https://cdn.pixabay.com/photo/2014/03/25/16/57/glass-297666_1280.png"
+          alt="상품 이미지"
+        />
+        <div class="item-info">
+          <div class="item-title">상품 2</div>
+          <div class="item-price">₩15,000</div>
+        </div>
+        <div class="quantity">
+          <button onclick="decreaseQuantity(this)">-</button>
+          <input type="number" value="1" min="1" />
+          <button onclick="increaseQuantity(this)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeItem(this)">삭제</button>
+      </div>
+      <button class="checkout-btn">결제하기</button>
+    </div>
+    <script>
+      // 수량 감소 함수
+      function decreaseQuantity(button) {
+        let input = button.nextElementSibling;
+        if (input.value > 1) {
+          input.value--;
+        }
+      }
+      // 수량 증가 함수
+      function increaseQuantity(button) {
+        let input = button.previousElementSibling;
+        input.value++;
+      }
+      // 상품 삭제 함수
+      function removeItem(button) {
+        button.parentElement.remove();
+      }
+    </script>
+  </body>
+</html>
